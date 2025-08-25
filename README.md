@@ -1,37 +1,81 @@
-# 🧰 TCP Proxy em Python
+📊 Sistema de Controle de Funcionários
 
-Este projeto implementa um **proxy TCP** escrito em Python. Ele permite interceptar, modificar e monitorar pacotes entre um cliente e um servidor remoto — ideal para testes, debugging ou análise de tráfego.
+Este projeto é um sistema simples em Python + SQLite para gerenciar funcionários.
+Ele permite armazenar e visualizar dados de funcionários de forma prática usando o terminal.
 
----
+✨ Funcionalidades
 
-## ⚙️ Funcionalidades
+✅ Criação automática do banco de dados Funcionario.db
+✅ Cadastro de funcionários (nome, cargo e salário)
+✅ Visualização de todos os funcionários cadastrados
+✅ Interface de menu interativo no terminal
 
-- Interceptação de tráfego bidirecional
-- Impressão do conteúdo em formato **hex dump**
-- Threads para conexões simultâneas
-- Buffer de recebimento configurável
-- Funções de manipulação de requisição e resposta
-- Detecção de fim de conexão
+🛠️ Tecnologias Utilizadas
 
----
+Python 3
 
-## 📌 Uso
+SQLite3
+ (já incluso no Python, não precisa instalar nada)
+
+📂 Estrutura do Projeto
+📦 projeto-funcionarios
+ ┣ 📜 main.py        # Código principal
+ ┣ 📜 README.md      # Documentação
+ ┗ 📜 Funcionario.db # Banco de dados (criado automaticamente)
+
+▶️ Como Executar
+
+Clone este repositório ou copie o código para main.py
+
+Execute no terminal:
+
+python main.py
 
 
-python proxy.py [localhost] [localport] [remotehost] [remoteport] [receive_first]
+Será exibido o menu:
 
-🔍 Exemplo
-bash
-Copiar
-Editar
-python proxy.py 127.0.0.1 9000 10.12.132.1 9000 True
-receive_first: define se o proxy deve receber dados do servidor remoto antes de enviar algo do cliente.
+==================================================
+Sistema de Controle de Funcionarios
+        [1] Armazenar
+        [2] Visualizar
+==================================================
 
-🔎 Funções principais
-hexdump(): exibe o tráfego interceptado no formato hexadecimal
 
-proxy_handler(): lida com o fluxo entre cliente e servidor
+Escolha:
 
-receive_from(): coleta dados de forma segura com timeout
+[1] Armazenar → cadastra um novo funcionário
 
-request_handler() / response_handler(): pontos ideais para injetar/modificar pacotes
+[2] Visualizar → lista todos os funcionários
+
+💾 Estrutura do Banco de Dados
+
+Tabela criada: funcionarios
+
+Campo	Tipo	Descrição
+id	INTEGER	Chave primária (auto incremento)
+nome	TEXT	Nome do funcionário
+cargo	TEXT	Cargo do funcionário
+salario	REAL	Salário do funcionário
+📌 Exemplo de Uso
+
+Cadastro de funcionário:
+
+Nome: João Silva
+Cargo: Desenvolvedor
+Salario: 4500
+
+
+Visualização no banco:
+
+========================================
+Banco de dados
+========================================
+(1, 'João Silva', 'Desenvolvedor', 4500.0)
+
+🚀 Melhorias Futuras
+
+Função para editar e excluir funcionários
+
+Validação de dados (ex: impedir salário inválido)
+
+Interface gráfica com Tkinter, Flask ou Streamlit
